@@ -7,6 +7,7 @@ import 'package:pshgtask2/loginscreen.dart';
 import 'package:pshgtask2/manageprofilescreen.dart';
 import 'firebase_options.dart';
 
+//comment
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
