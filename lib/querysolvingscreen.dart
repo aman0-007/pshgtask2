@@ -8,12 +8,12 @@ class QuerySolvingScreen extends StatefulWidget {
   final String userName;
 
   const QuerySolvingScreen({
-    Key? key,
+    super.key,
     required this.queryType,
     required this.queryExplanation,
     required this.userId,
     required this.userName,
-  }) : super(key: key);
+  });
 
   @override
   _QuerySolvingScreenState createState() => _QuerySolvingScreenState();
@@ -35,7 +35,7 @@ class _QuerySolvingScreenState extends State<QuerySolvingScreen> {
           children: [
             const Text(
               'User ID:',
-              style: const TextStyle(fontWeight: FontWeight.bold),
+              style: TextStyle(fontWeight: FontWeight.bold),
             ),
             Text(widget.userId),
             const SizedBox(height: 10),
@@ -85,7 +85,7 @@ class _QuerySolvingScreenState extends State<QuerySolvingScreen> {
                     .then((docRef) {
                   print('Solved query added successfully to solved_queries collection');
                   ScaffoldMessenger.of(context).showSnackBar(
-                    SnackBar(content: Text('Explanation submitted successfully')),
+                    const SnackBar(content: Text('Explanation submitted successfully')),
                   );
 
                   _solutionController.clear();
@@ -96,7 +96,7 @@ class _QuerySolvingScreenState extends State<QuerySolvingScreen> {
                       .where('queryExplanation', isEqualTo: widget.queryExplanation)
                       .get()
                       .then((querySnapshot) {
-                    querySnapshot.docs.forEach((doc) {
+                    for (var doc in querySnapshot.docs) {
                       doc.reference.delete().then((_) {
                         // Query removed successfully from 'queries' collection
                         print('Query removed successfully from queries collection');
@@ -104,7 +104,7 @@ class _QuerySolvingScreenState extends State<QuerySolvingScreen> {
                         // Handle error
                         print('Failed to remove query from queries collection: $error');
                       });
-                    });
+                    }
                   }).catchError((error) {
                     // Handle error
                     print('Failed to find query to remove from queries collection: $error');

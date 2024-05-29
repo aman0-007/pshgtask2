@@ -99,7 +99,7 @@ class ForgotPasswordScreen extends StatelessWidget {
             );
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => LoginScreen()),
+              MaterialPageRoute(builder: (context) => const LoginScreen()),
             );
           } catch (e) {
             // If the email is not registered, show error message

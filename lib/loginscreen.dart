@@ -384,7 +384,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         mainAxisAlignment: MainAxisAlignment.end,
                         children: [
                           Padding(
-                            padding: EdgeInsets.only(right: 20,bottom: 10),
+                            padding: const EdgeInsets.only(right: 20,bottom: 10),
                             child: ElevatedButton(
                               style: ElevatedButton.styleFrom(
                                 elevation: 5.0,

@@ -40,7 +40,7 @@ class Authentication {
         password: password,
       );
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
+        const SnackBar(
           content: Text('Registration successful'),
         ),
       );

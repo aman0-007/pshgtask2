@@ -3,17 +3,21 @@ import 'package:flutter/material.dart';
 import 'package:pshgtask2/querysolvingscreen.dart';
 
 class AllQueriesScreen extends StatelessWidget {
+  const AllQueriesScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: const Text('All Queries'),
       ),
-      body: QuerySnapshotListView(),
+      body: const QuerySnapshotListView(),
     );
   }
 }
 class AllUsersScreen extends StatelessWidget {
+  const AllUsersScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -47,11 +51,13 @@ class AllUsersScreen extends StatelessWidget {
 }
 
 class SolvedQueriesScreen extends StatelessWidget {
+  const SolvedQueriesScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Solved Queries'),
+        title: const Text('Solved Queries'),
       ),
       body: StreamBuilder(
         stream: FirebaseFirestore.instance.collection('solved_queries').snapshots(),
@@ -61,11 +67,11 @@ class SolvedQueriesScreen extends StatelessWidget {
           }
 
           if (snapshot.connectionState == ConnectionState.waiting) {
-            return Center(child: CircularProgressIndicator());
+            return const Center(child: CircularProgressIndicator());
           }
 
           if (snapshot.data!.docs.isEmpty) {
-            return Center(child: Text('No solved queries yet.'));
+            return const Center(child: Text('No solved queries yet.'));
           }
 
           return ListView.builder(
@@ -75,7 +81,7 @@ class SolvedQueriesScreen extends StatelessWidget {
               return ListTile(
                 title: Text('Query Type: ${data['queryType']}'),
                 subtitle: Text('User ID: ${data['userId']}'),
-                trailing: Icon(Icons.check_circle, color: Colors.green),
+                trailing: const Icon(Icons.check_circle, color: Colors.green),
                 onTap: () {
 
                 },
@@ -88,6 +94,8 @@ class SolvedQueriesScreen extends StatelessWidget {
   }
 }
 class QuerySnapshotListView extends StatelessWidget {
+  const QuerySnapshotListView({super.key});
+
   @override
   Widget build(BuildContext context) {
     return StreamBuilder<QuerySnapshot>(
@@ -190,7 +198,7 @@ class QuerySnapshotListView extends StatelessWidget {
 
 
 class MentorHomepage extends StatefulWidget {
-  const MentorHomepage({Key? key}) : super(key: key);
+  const MentorHomepage({super.key});
 
   @override
   _MentorHomepageState createState() => _MentorHomepageState();
@@ -199,10 +207,10 @@ class MentorHomepage extends StatefulWidget {
 class _MentorHomepageState extends State<MentorHomepage> {
   int _selectedIndex = 0;
 
-  static  List<Widget> _screens = [
-    AllQueriesScreen(),
-    SolvedQueriesScreen(),
-    AllUsersScreen(),
+  static  final List<Widget> _screens = [
+    const AllQueriesScreen(),
+    const SolvedQueriesScreen(),
+    const AllUsersScreen(),
   ];
 
   @override

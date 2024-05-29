@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class AllQueriesPage extends StatefulWidget {
-  const AllQueriesPage({Key? key}) : super(key: key);
+  const AllQueriesPage({super.key});
 
   @override
   _AllQueriesPageState createState() => _AllQueriesPageState();
@@ -78,12 +78,12 @@ class _AllQueriesPageState extends State<AllQueriesPage> {
                       data['queryType'],
                       style: const TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
                     ),
-                    SizedBox(height: 4),
+                    const SizedBox(height: 4),
                     Text(
                       data['queryExplanation'],
                       style: const TextStyle(color: Colors.white),
                     ),
-                    SizedBox(height: 4),
+                    const SizedBox(height: 4),
                     Text(
                       'User ID: ${_userData['userId']}',
                       style: const TextStyle(color: Colors.white),

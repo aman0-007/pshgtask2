@@ -1,10 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:pshgtask2/allqueries.dart';
-import 'package:pshgtask2/dashboardscreen.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:pshgtask2/landingscreen.dart';
 import 'package:pshgtask2/loginscreen.dart';
-import 'package:pshgtask2/manageprofilescreen.dart';
 import 'firebase_options.dart';
 
 

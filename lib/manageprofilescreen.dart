@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 class EditProfile extends StatefulWidget {
-  const EditProfile({Key? key});
+  const EditProfile({super.key});
 
   @override
   _EditProfileState createState() => _EditProfileState();

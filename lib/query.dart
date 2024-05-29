@@ -31,7 +31,7 @@ class QueriesPage extends StatelessWidget {
   final TextEditingController _queryTypeController = TextEditingController();
   final TextEditingController _queryExplanationController = TextEditingController();
 
-  QueriesPage({Key? key}) : super(key: key);
+  QueriesPage({super.key});
 
   @override
   Widget build(BuildContext context) {

@@ -76,7 +76,7 @@ class HomePage extends StatelessWidget {
               onTap: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => AllQueriesPage()),
+                  MaterialPageRoute(builder: (context) => const AllQueriesPage()),
                 );
               },
             ),
