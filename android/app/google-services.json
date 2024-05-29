@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "274695880965",
+    "project_id": "pshg-7c178",
+    "storage_bucket": "pshg-7c178.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:274695880965:android:c0cd1adeaa8db947a9376c",
+        "android_client_info": {
+          "package_name": "com.example.pshgtask2"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "274695880965-v3alm5fdm39gubu9skv39iu09dtg0eab.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA84GhbV4JPbdskZ_Y8TMTjCC_hJM0rGqo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "274695880965-v3alm5fdm39gubu9skv39iu09dtg0eab.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "274695880965-d5jgj68drl46vr3er49ho5pino67igib.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.pshgtask"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
