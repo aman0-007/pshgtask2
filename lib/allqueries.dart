@@ -12,12 +12,26 @@ class AllQueriesPage extends StatefulWidget {
 class _AllQueriesPageState extends State<AllQueriesPage> {
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
 
-  late List<DocumentSnapshot> _queries = [];
+  late List<QueryDocumentSnapshot> _queries = [];
+  late Map<String, dynamic> _userData = {}; // To store user data
 
   @override
   void initState() {
     super.initState();
+    _fetchUserData(); // Fetch user data
     _fetchQueries();
+  }
+
+  Future<void> _fetchUserData() async {
+    // Assuming user is logged in and you have access to user's uid
+    String? uid = FirebaseAuth.instance.currentUser?.uid;
+
+    if (uid != null) {
+      DocumentSnapshot userDataSnapshot = await _firestore.collection('users').doc(uid).get();
+      setState(() {
+        _userData = userDataSnapshot.data() as Map<String, dynamic>;
+      });
+    }
   }
 
   Future<void> _fetchQueries() async {
@@ -25,11 +39,7 @@ class _AllQueriesPageState extends State<AllQueriesPage> {
     String? uid = FirebaseAuth.instance.currentUser?.uid;
 
     if (uid != null) {
-      QuerySnapshot querySnapshot = await _firestore
-          .collection('users')
-          .doc(uid)
-          .collection('queries')
-          .get();
+      QuerySnapshot querySnapshot = await _firestore.collection('users').doc(uid).collection('queries').get();
 
       setState(() {
         _queries = querySnapshot.docs;
@@ -42,7 +52,7 @@ class _AllQueriesPageState extends State<AllQueriesPage> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('All Queries'),
-        backgroundColor: Colors.blue, // Updated app bar color
+        backgroundColor: Colors.blue,
       ),
       body: Container(
         decoration: BoxDecoration(
@@ -52,7 +62,6 @@ class _AllQueriesPageState extends State<AllQueriesPage> {
             ? ListView.builder(
           itemCount: _queries.length,
           itemBuilder: (context, index) {
-            // Accessing fields from the document data
             var data = _queries[index].data() as Map<String, dynamic>;
             return Card(
               elevation: 3,
@@ -62,13 +71,28 @@ class _AllQueriesPageState extends State<AllQueriesPage> {
               ),
               child: ListTile(
                 contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
-                title: Text(
-                  data['queryType'],
-                  style: const TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
-                ),
-                subtitle: Text(
-                  data['queryExplanation'],
-                  style: const TextStyle(color: Colors.white),
+                title: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      data['queryType'],
+                      style: const TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+                    ),
+                    SizedBox(height: 4),
+                    Text(
+                      data['queryExplanation'],
+                      style: const TextStyle(color: Colors.white),
+                    ),
+                    SizedBox(height: 4),
+                    Text(
+                      'User ID: ${_userData['userId']}',
+                      style: const TextStyle(color: Colors.white),
+                    ),
+                    Text(
+                      'Name: ${_userData['name']}',
+                      style: const TextStyle(color: Colors.white),
+                    ),
+                  ],
                 ),
                 tileColor: Colors.blue.withOpacity(0.3), // Light blue color for ListTile
                 // You can add more fields as needed
@@ -82,5 +106,4 @@ class _AllQueriesPageState extends State<AllQueriesPage> {
       ),
     );
   }
-
 }

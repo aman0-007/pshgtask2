@@ -188,6 +188,7 @@ class QueriesPage extends StatelessWidget {
             'queryType': queryType,
             'queryExplanation': queryExplanation,
             'timestamp': DateTime.now(), // Add timestamp
+            'userId': userId, // Add user ID
           }).then((value) {
             // Data added successfully to user's document
             ScaffoldMessenger.of(context).showSnackBar(
@@ -202,7 +203,7 @@ class QueriesPage extends StatelessWidget {
               'queryType': queryType,
               'queryExplanation': queryExplanation,
               'timestamp': DateTime.now(), // Add timestamp
-              'userId': user!.uid, // Add user ID
+              'userId': userId, // Add user ID
             }).then((value) {
               // Data added successfully to extra collection
             }).catchError((error) {
@@ -237,4 +238,5 @@ class QueriesPage extends StatelessWidget {
       ),
     );
   }
+
 }
