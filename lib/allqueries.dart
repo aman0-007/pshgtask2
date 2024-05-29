@@ -23,7 +23,7 @@ class _AllQueriesPageState extends State<AllQueriesPage> {
   }
 
   Future<void> _fetchUserData() async {
-    // Assuming user is logged in and you have access to user's uid
+
     String? uid = FirebaseAuth.instance.currentUser?.uid;
 
     if (uid != null) {
@@ -35,7 +35,7 @@ class _AllQueriesPageState extends State<AllQueriesPage> {
   }
 
   Future<void> _fetchQueries() async {
-    // Assuming user is logged in and you have access to user's uid
+
     String? uid = FirebaseAuth.instance.currentUser?.uid;
 
     if (uid != null) {
@@ -56,7 +56,7 @@ class _AllQueriesPageState extends State<AllQueriesPage> {
       ),
       body: Container(
         decoration: BoxDecoration(
-          color: Colors.blue.withOpacity(0.1), // Updated background color
+          color: Colors.blue.withOpacity(0.1),
         ),
         child: _queries.isNotEmpty
             ? ListView.builder(
@@ -94,8 +94,7 @@ class _AllQueriesPageState extends State<AllQueriesPage> {
                     ),
                   ],
                 ),
-                tileColor: Colors.blue.withOpacity(0.3), // Light blue color for ListTile
-                // You can add more fields as needed
+                tileColor: Colors.blue.withOpacity(0.3),
               ),
             );
           },

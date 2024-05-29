@@ -59,10 +59,10 @@ class Authentication {
         email: email,
         password: password,
       );
-      // Sign-in successful, return the user
+
       return userCredential.user;
     } catch (e) {
-      // Sign-in failed, return null and handle the error (e.g., display an error message)
+
       print('Sign-in failed: $e');
       return null;
     }

@@ -1,5 +1,4 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:pshgtask2/authentication.dart';
@@ -46,14 +45,14 @@ class _LoginScreenState extends State<LoginScreen> {
   final TextEditingController _passwordController = TextEditingController();
 
   bool _validateEmail(String email) {
-    // Regular expression for validating email addresses
+
     RegExp emailRegExp = RegExp(
         r'^[a-zA-Z0-9._%+-]+@(gmail\.com|outlook\.com|ves\.ac\.in)$');
     return emailRegExp.hasMatch(email);
   }
 
   bool _validatePassword(String password) {
-    // Regular expression for validating password
+
     RegExp passwordRegExp = RegExp(
         r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#$&*])(.{8,})$');
     return passwordRegExp.hasMatch(password);
@@ -189,7 +188,7 @@ class _LoginScreenState extends State<LoginScreen> {
             // Attempt to sign in
             User? user = await _authentication.signInWithEmailAndPassword(email, password);
             if (user != null) {
-              // Sign-in successful, navigate to dashboard
+
               Navigator.pushReplacement(
                 context,
                 MaterialPageRoute(builder: (context) =>  const HomePage()),

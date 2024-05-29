@@ -63,7 +63,7 @@ class _QuerySolvingScreenState extends State<QuerySolvingScreen> {
             ),
             TextFormField(
               controller: _solutionController,
-              maxLines: 10, // Adjust the number of lines as needed
+              maxLines: 10,
               decoration: const InputDecoration(
                 hintText: 'Write your solution here...',
                 border: OutlineInputBorder(),
@@ -72,10 +72,8 @@ class _QuerySolvingScreenState extends State<QuerySolvingScreen> {
             const SizedBox(height: 20),
             ElevatedButton(
               onPressed: () {
-                // Get the solution from the controller
-                String solution = _solutionController.text;
 
-                // Add the solved query to the 'solved_queries' collection
+                String solution = _solutionController.text;
                 FirebaseFirestore.instance
                     .collection('solved_queries')
                     .add({
@@ -85,16 +83,12 @@ class _QuerySolvingScreenState extends State<QuerySolvingScreen> {
                   'solution': solution,
                 })
                     .then((docRef) {
-                  // Solved query added successfully to 'solved_queries' collection
                   print('Solved query added successfully to solved_queries collection');
-                  // Show Snackbar
                   ScaffoldMessenger.of(context).showSnackBar(
                     SnackBar(content: Text('Explanation submitted successfully')),
                   );
-                  // Clear solution field
-                  _solutionController.clear();
 
-                  // Remove the solved query from the 'queries' collection
+                  _solutionController.clear();
                   FirebaseFirestore.instance
                       .collection('queries')
                       .where('userId', isEqualTo: widget.userId)
@@ -123,8 +117,6 @@ class _QuerySolvingScreenState extends State<QuerySolvingScreen> {
               },
               child: const Text('Submit'),
             ),
-
-
           ],
         ),
       ),

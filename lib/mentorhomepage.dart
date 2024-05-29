@@ -1,6 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:googleapis/mybusinessverifications/v1.dart';
 import 'package:pshgtask2/querysolvingscreen.dart';
 
 class AllQueriesScreen extends StatelessWidget {
@@ -36,8 +35,8 @@ class AllUsersScreen extends StatelessWidget {
             children: snapshot.data!.docs.map((DocumentSnapshot document) {
               Map<String, dynamic> data = document.data() as Map<String, dynamic>;
               return ListTile(
-                title: Text(data['name']), // Assuming 'name' is the field for user's name
-                subtitle: Text(data['email']), // Assuming 'email' is the field for user's email
+                title: Text(data['name']),
+                subtitle: Text(data['email']),
               );
             }).toList(),
           );
@@ -78,7 +77,7 @@ class SolvedQueriesScreen extends StatelessWidget {
                 subtitle: Text('User ID: ${data['userId']}'),
                 trailing: Icon(Icons.check_circle, color: Colors.green),
                 onTap: () {
-                  // Add functionality to view details if needed
+
                 },
               );
             },
@@ -129,7 +128,7 @@ class QuerySnapshotListView extends StatelessWidget {
                 }
                 final userData = userSnapshot.data!.data() as Map<String, dynamic>;
                 final userName = userData['name'];
-                final userEmail = userData['email']; // Add this line to fetch user email
+                final userEmail = userData['email'];
                 return ListTile(
                   title: Text(queryType),
                   subtitle: Column(
@@ -137,8 +136,8 @@ class QuerySnapshotListView extends StatelessWidget {
                     children: [
                       Text(queryExplanation),
                       Text('User ID: $userId'),
-                      Text('Name: $userName'), // Display user's name
-                      Text('Email: $userEmail'), // Display user's email
+                      Text('Name: $userName'),
+                      Text('Email: $userEmail'),
                     ],
                   ),
                   onTap: () {
@@ -178,7 +177,6 @@ class QuerySnapshotListView extends StatelessWidget {
                     userName: userName,
                   ),
                 ));
-                // You can optionally perform other actions here, such as updating the query status
               },
               child: const Text('Yes'),
             ),

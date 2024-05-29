@@ -14,7 +14,7 @@ class _EditProfileState extends State<EditProfile> {
   @override
   void initState() {
     super.initState();
-    // Get the currently signed-in user
+
     _user = FirebaseAuth.instance.currentUser;
   }
 
@@ -57,10 +57,10 @@ class _EditProfileState extends State<EditProfile> {
                   onPressed: () {},
                   style: ElevatedButton.styleFrom(
                     padding: const EdgeInsets.all(15),
-                    backgroundColor: Colors.white, // Changed button color to white
-                    foregroundColor: const Color(0xFF527DAA), // Changed text color to match the theme
+                    backgroundColor: Colors.white,
+                    foregroundColor: const Color(0xFF527DAA),
                     shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(30.0), // Rounded button corners
+                      borderRadius: BorderRadius.circular(30.0),
                     ),
                   ),
                   child: const Text(

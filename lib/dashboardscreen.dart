@@ -51,7 +51,7 @@ class HomePage extends StatelessWidget {
               ),
             ),
             ListTile(
-              leading: const Icon(Icons.person, color: Colors.blue), // Add icon for Profile
+              leading: const Icon(Icons.person, color: Colors.blue),
               title: const Text('Profile', style: TextStyle(color: Colors.blue)),
               onTap: () {
                 Navigator.push(
@@ -84,7 +84,6 @@ class HomePage extends StatelessWidget {
               leading: const Icon(Icons.settings, color: Colors.blue),
               title: const Text('Settings', style: TextStyle(color: Colors.blue)),
               onTap: () {
-                // Navigate to Settings page
               },
             ),
             ListTile(
@@ -138,7 +137,6 @@ class HomePage extends StatelessWidget {
                   ),
                 ),
                 SizedBox(height: 30.0),
-                // Add more widgets as needed for the homepage content
               ],
             ),
           ),

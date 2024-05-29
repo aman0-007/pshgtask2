@@ -179,35 +179,34 @@ class QueriesPage extends StatelessWidget {
       width: double.infinity,
       child: ElevatedButton(
         onPressed: () {
-          // Access the entered query type and explanation
+
           String queryType = _queryTypeController.text;
           String queryExplanation = _queryExplanationController.text;
 
-          // Save the data to Firestore in user's document
+
           FirebaseFirestore.instance.collection('users').doc(user!.uid).collection('queries').add({
             'queryType': queryType,
             'queryExplanation': queryExplanation,
             'timestamp': DateTime.now(), // Add timestamp
             'userId': userId, // Add user ID
           }).then((value) {
-            // Data added successfully to user's document
+
             ScaffoldMessenger.of(context).showSnackBar(
               const SnackBar(content: Text('Query submitted successfully')),
             );
-            // Clear the text fields after submission
+
             _queryTypeController.clear();
             _queryExplanationController.clear();
 
-            // Save the data to Firestore in extra collection
             FirebaseFirestore.instance.collection('queries').add({
               'queryType': queryType,
               'queryExplanation': queryExplanation,
               'timestamp': DateTime.now(), // Add timestamp
               'userId': userId, // Add user ID
             }).then((value) {
-              // Data added successfully to extra collection
+
             }).catchError((error) {
-              // Error occurred while adding data to extra collection
+
               print('Failed to submit query to extra collection: $error');
             });
           }).catchError((error) {

@@ -1,7 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:pshgtask2/enterotpscreen.dart';
 import 'package:pshgtask2/loginscreen.dart';
 
 // Constants
@@ -33,17 +32,15 @@ class ForgotPasswordScreen extends StatelessWidget {
 
   ForgotPasswordScreen({super.key});
 
-  // Method to validate email
   bool _validateEmail(String email) {
-    // Regular expression for validating email addresses
+
     RegExp emailRegExp = RegExp(
         r'^[a-zA-Z0-9._%+-]+@(gmail\.com|outlook\.com|ves\.ac\.in)$');
     return emailRegExp.hasMatch(email);
   }
 
-  // Method to validate mobile number
+
   bool _validateMobileNumber(String mobileNumber) {
-    // Regular expression for validating mobile number (starts with 6, 7, 8, or 9 and is 10 digits long)
     return RegExp(r'^[6-9]\d{9}$').hasMatch(mobileNumber);
   }
 

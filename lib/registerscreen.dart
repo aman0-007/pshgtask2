@@ -4,7 +4,6 @@ import 'package:flutter/services.dart';
 import 'package:pshgtask2/authentication.dart';
 import 'package:pshgtask2/loginscreen.dart';
 
-// Constants
 const kHintTextStyle = TextStyle(
   color: Colors.white54,
   fontFamily: 'OpenSans',
@@ -48,12 +47,10 @@ class _RegisterScreenState extends State<RegisterScreen> {
   }
 
   bool _validateContactNumber(String contactNumber) {
-    // Regular expression for validating contact number (starts with 6, 7, 8, or 9 and is 10 digits long)
     return RegExp(r'^[6-9]\d{9}$').hasMatch(contactNumber);
   }
 
   bool _validateEmail(String email) {
-    // Regular expression for validating email addresses
     RegExp emailRegExp = RegExp(
         r'^[a-zA-Z0-9._%+-]+@(gmail\.com|outlook\.com|ves\.ac\.in)$');
     return emailRegExp.hasMatch(email);
@@ -226,13 +223,12 @@ class _RegisterScreenState extends State<RegisterScreen> {
               _validateEmail(email) &&
               _validatePassword(password)) {
             try {
-              // Attempt to register the user
+
               await _authentication.registerWithEmailAndPassword(context,email, password,contactNumber,fullName);
 
               ScaffoldMessenger.of(context).showSnackBar(
                 const SnackBar(content: Text('Registeration Successful')),
               );
-              // Registration successful, navigate to login screen
               Navigator.pushReplacement(
                 context,
                 MaterialPageRoute(builder: (context) => const LoginScreen()),
@@ -271,7 +267,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
               }
             }
           } else {
-            // Show error message
+
             String errorMessage = 'Please correct the following:\n';
             if (!_validateFullName(fullName)) {
               errorMessage += '- Full Name should not include numbers.\n';
@@ -292,7 +288,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
               SnackBar(
                 content: Text(errorMessage),
                 backgroundColor: Colors.red,
-                duration: const Duration(seconds: 5), // Adjust the duration as needed
+                duration: const Duration(seconds: 5),
               ),
             );
           }

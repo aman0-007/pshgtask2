@@ -1,5 +1,4 @@
 import 'dart:io';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
@@ -86,7 +85,7 @@ class _ProfilePageState extends State<ProfilePage> {
                 radius: 50.0,
                 backgroundImage: _image != null
                     ? FileImage(_image!)
-                    : const NetworkImage('https://example.com/avatar.jpg'), // Replace with Firebase image URL
+                    : const NetworkImage('https://example.com/avatar.jpg'),
               ),
             ),
             const SizedBox(height: 20.0),
@@ -116,7 +115,6 @@ class _ProfilePageState extends State<ProfilePage> {
             const SizedBox(height: 20.0),
             ElevatedButton(
               onPressed: () {
-                // Handle edit profile button action
               },
               child: const Text('Edit Profile'),
             ),

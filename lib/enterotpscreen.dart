@@ -121,11 +121,11 @@ class _EnterOtpScreenState extends State<EnterOtpScreen> {
 
   Widget _buildOtpTextField(int index) {
     return SizedBox(
-      width: 70.0, // Increase the width
+      width: 70.0,
       child: Container(
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10.0),
-          border: Border.all(color: Colors.white, width: 2.0), // Increase border size
+          border: Border.all(color: Colors.white, width: 2.0),
         ),
         child: TextField(
           controller: _controllers[index],
@@ -148,14 +148,14 @@ class _EnterOtpScreenState extends State<EnterOtpScreen> {
           onChanged: (value) {
             if (value.isEmpty && index > 0) {
               _focusNodes[index].unfocus();
-              FocusScope.of(context).requestFocus(_focusNodes[index - 1]); // Move cursor to previous box
+              FocusScope.of(context).requestFocus(_focusNodes[index - 1]);
             } else if (value.length == 1 && index < 3) {
               _focusNodes[index].unfocus();
-              FocusScope.of(context).requestFocus(_focusNodes[index + 1]); // Move cursor to next box
+              FocusScope.of(context).requestFocus(_focusNodes[index + 1]);
             }
           },
           focusNode: _focusNodes[index],
-          cursorColor: Colors.white, // Change cursor color here
+          cursorColor: Colors.white,
         ),
       ),
     );
@@ -168,7 +168,7 @@ class _EnterOtpScreenState extends State<EnterOtpScreen> {
       width: double.infinity,
       child: ElevatedButton(
         onPressed: () {
-          // Handle OTP validation and submission
+
           Navigator.push(
             context,
             MaterialPageRoute(builder: (context) => const LoginScreen()),
